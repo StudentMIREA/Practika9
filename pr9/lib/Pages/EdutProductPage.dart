@@ -24,8 +24,8 @@ class _EditProductPageState extends State<EditProductPage> {
   void initState() {
     super.initState();
     ApiService().getProductsByID(widget.index).then((value) => {
-          _addController1.text = value.image,
-          _addController2.text = value.name,
+          _addController1.text = value.name,
+          _addController2.text = value.image,
           _addController3.text = value.cost.toString(),
           _addController4.text = value.describtion,
           img_link = value.image,
@@ -42,7 +42,7 @@ class _EditProductPageState extends State<EditProductPage> {
   }
 
   void AddItem() async {
-    if (int.tryParse(_addController3.text) != null &&
+    if (double.tryParse(_addController3.text) != null &&
         _addController1.text.isNotEmpty &&
         _addController2.text.isNotEmpty &&
         _addController3.text.isNotEmpty &&

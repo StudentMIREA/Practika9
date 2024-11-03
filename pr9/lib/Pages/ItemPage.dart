@@ -204,6 +204,19 @@ class _ItemPageState extends State<ItemPage> {
     });
   }
 
+  void NavToEdit(index) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditProductPage(
+          context,
+          index: index,
+        ),
+      ),
+    );
+    _refreshData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Items>(
@@ -252,13 +265,7 @@ class _ItemPageState extends State<ItemPage> {
                       size: 30,
                     ),
                   ),
-                  onPressed: () {
-                    EditProductPage(
-                      context,
-                      index: item.id,
-                    );
-                    _refreshData();
-                  },
+                  onPressed: () => {NavToEdit(item.id)},
                 ),
               ],
             ),
